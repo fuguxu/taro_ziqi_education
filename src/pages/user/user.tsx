@@ -19,10 +19,10 @@ export default class User extends Component {
   config: Config = {
     navigationBarTitleText: '个人中心',
   }
-  readOnly: string;
+  // readOnly: string;
   constructor(props){
     super(props)
-    this.readOnly = 'test'
+    // this.readOnly = 'test'
   }
   state = {
     count:1
@@ -34,7 +34,7 @@ export default class User extends Component {
       type:'success'
     })
   }
-  handleChange = (value)=> {
+  handleChange = async (value)=> {
     this.setState({
       count:value
     },()=>{
@@ -72,7 +72,6 @@ export default class User extends Component {
         />
         <View>
           <Text>{this.state.count}</Text>
-          <Text>{this.readOnly}</Text>
         </View>
       </View>
     )

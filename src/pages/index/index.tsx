@@ -26,12 +26,24 @@ export default class Index extends Component {
     })
   }
 
-  handlerClick = ()=>{ //用箭头函数 在模板中绑定解决this指向问题
+  handlerClick = async ()=>{ //用箭头函数 在模板中绑定解决this指向问题
     console.log(this)
-    Taro.showToast({
-      title: '测试一条toast',
-      icon: 'none'
-    })
+    // Taro.showToast({
+    //   title: '测试一条toast',
+    //   icon: 'none'
+    // })
+    Taro.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        Taro.openLocation({
+          latitude,
+          longitude,
+          scale: 18
+        })
+      }
+     })
   }
   onShareAppMessage (res){
     console.log(res)
@@ -63,6 +75,7 @@ export default class Index extends Component {
         />
         </View>
         <View className='at-icon at-icon-settings'></View>
+        <View className='fa fa-clock-o'></View>
       </View>
       
     )
