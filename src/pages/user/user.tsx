@@ -6,6 +6,11 @@ import Count from '../../components/count/count'
 
 import {CounterContext} from '../../components/createContext/counter-context'
 
+interface todo {
+  text:string,
+  name?:string,
+  age?:number
+}
 
 export default class User extends Component {
 
@@ -27,11 +32,29 @@ export default class User extends Component {
   state = {
     count:1
   }
+  list:todo[] = [
+    {
+      text:'睡觉'
 
+    }
+  ]
   zjClick=()=>{
     Taro.atMessage({
       message:'张晶，我爱你哟！',
       type:'success'
+    })
+    Taro.login({
+      success:(res)=>{
+        console.log(res)
+      }
+    })
+    Taro.openSetting({
+      'success':(res)=>{
+        console.log(res)
+      },
+      'fail':(res)=>{
+        console.log(res)
+      }
     })
   }
   handleChange = async (value)=> {

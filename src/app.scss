@@ -1,7 +1,26 @@
-@import "~taro-ui/dist/style/index.scss";
+// @import "~taro-ui/dist/style/index.scss"; 按需引入组件样式
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-ui/dist/style/components/search-bar.scss";
+@import "~taro-ui/dist/style/components/input.scss";
+@import "~taro-ui/dist/style/components/input-number.scss";
+@import "~taro-ui/dist/style/components/message.scss";
+@import "~taro-ui/dist/style/components/accordion.scss";
+
 @import "./assets/fonts/font-awesome.scss";
 
 // 在此可覆盖taro-ui里面的样式
 .at-button{
-    border-radius:50px;
+    // border-radius:50px;
+}
+.fixed {
+    position: fixed;
+    &-b{
+        bottom: 0px;
+        left:0px;
+        right:0px;
+    }
+}
+.border-radius-0{
+    border-radius:0px;
 }

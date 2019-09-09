@@ -45,6 +45,11 @@ export default class Index extends Component {
       }
      })
   }
+  signClick = async ()=>{
+    Taro.navigateTo({
+      url:'/pages/sign/sign'
+    })
+  }
   onShareAppMessage (res){
     console.log(res)
     return {
@@ -67,7 +72,7 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <AtButton onClick={this.handlerClick} type='primary'>按钮文案</AtButton>
+        <AtButton onClick={this.handlerClick} type='primary'>查看地理位置</AtButton>
         <View>
           <AtSearchBar
           value={this.state.value}
@@ -76,6 +81,7 @@ export default class Index extends Component {
         </View>
         <View className='at-icon at-icon-settings'></View>
         <View className='fa fa-clock-o'></View>
+        <AtButton onClick={this.signClick} type='primary'>注册</AtButton>
       </View>
       
     )

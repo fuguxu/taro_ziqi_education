@@ -23,6 +23,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/user/user',
+      'pages/sign/sign',
     ],
     "permission": {
       "scope.userLocation": {
