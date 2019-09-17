@@ -1,5 +1,6 @@
 const path = require('path')
 
+console.log('----process.env.NODE_ENV-----',process.env.NODE_ENV)
 const config = {
   projectName: 'taro_ziqi_education',
   date: '2019-8-29',
@@ -27,15 +28,17 @@ const config = {
     }
   },
   defineConstants: {
+    DEV:process.env.NODE_ENV === 'development',//本地环境
+    PROD:process.env.NODE_ENV === 'production',//本地环境
   },
   alias: {
-    // '@actions': path.resolve(__dirname, '..', 'src/actions'),
-    '@assets': path.resolve(__dirname, '..', 'src/assets'),
-    '@components': path.resolve(__dirname, '..', 'src/components'),
-    '@constants': path.resolve(__dirname, '..', 'src/constants'),
-    // '@reducers': path.resolve(__dirname, '..', 'src/reducers'),
-    '@style': path.resolve(__dirname, '..', 'src/style'),
-    '@utils': path.resolve(__dirname, '..', 'src/utils')
+    // '@/actions': path.resolve(__dirname, '..', 'src/actions'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/constants': path.resolve(__dirname, '..', 'src/constants'),
+    // '@/reducers': path.resolve(__dirname, '..', 'src/reducers'),
+    '@/style': path.resolve(__dirname, '..', 'src/style'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils')
   },
   copy: {
     patterns: [

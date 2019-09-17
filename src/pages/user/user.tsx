@@ -40,7 +40,7 @@ export default class User extends Component {
   ]
   zjClick=()=>{
     Taro.atMessage({
-      message:'张晶，我爱你哟！',
+      message:'爱你哟！',
       type:'success'
     })
     Taro.login({
@@ -81,7 +81,7 @@ export default class User extends Component {
     return (
       <View className='user'>
         <AtMessage />
-        <AtButton onClick={this.zjClick} type='primary'>张晶，请点一下</AtButton>
+        <AtButton onClick={this.zjClick} type='primary'>请点一下</AtButton>
         <CounterContext.Provider value={this.state.count}>
           <Count />
         </CounterContext.Provider>

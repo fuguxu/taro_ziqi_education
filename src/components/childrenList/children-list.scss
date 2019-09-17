@@ -1,0 +1,17 @@
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/flex.scss";
+.child-list{
+    .child-header{
+        border-bottom: 1px solid #eee;
+        padding: 10px 0px;
+        .child-text{
+            margin-left:32px;
+        }
+        .icon-col{
+            text-align: right;
+            .at-icon{
+                margin-right: 32px;
+            }
+        }
+    }
+}

@@ -24,6 +24,8 @@ class App extends Component {
       'pages/index/index',
       'pages/user/user',
       'pages/sign/sign',
+      'pages/orgSign/orgSign',
+      'pages/child/child',
     ],
     "permission": {
       "scope.userLocation": {

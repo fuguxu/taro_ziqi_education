@@ -1,7 +1,10 @@
 import Taro, { Component, Config} from '@tarojs/taro'
-import { View ,Picker} from '@tarojs/components'
-import {AtForm,AtButton, AtInput,AtAccordion, AtList, AtListItem} from 'taro-ui'
+import { View ,Text,Picker} from '@tarojs/components'
+import {AtForm,AtButton, AtInput} from 'taro-ui'
+
 import './sign.scss'
+
+import ChildList from '@/components/childrenList/children-list';
 
 
 export default class Sign extends Component {
@@ -70,6 +73,12 @@ export default class Sign extends Component {
   handleClickChildren = (value)=>{
       this.setState({
           open:value
+      })
+  }
+  //新增孩子
+  addChildren = ()=>{
+    Taro.navigateTo({
+        url:'/pages/child/child?type=add'
       })
   }
 
@@ -155,16 +164,17 @@ export default class Sign extends Component {
                 onChange={this.handleChange.bind(this,'detail_area')}
             />
         </AtForm>
-        <AtAccordion hasBorder={true} isAnimation={false} title='孩子信息' open={this.state.open} onClick={this.handleClickChildren.bind(this)} >
-            <AtList hasBorder={true}>
-                <AtListItem 
-                hasBorder={true}
-                title='孩子1'
-                note='描述信息'
-                // arrow='right'
-                />
-            </AtList>
-        </AtAccordion>
+        <ChildList></ChildList>
+        {/* <View>
+            <View className="at-row border-b pt-10 pb-10">
+                <View className="at-col-10">
+                    <View className="ml-32">孩子信息</View>
+                </View>
+                <View className="at-col-2 text-right">
+                    <View onClick={this.addChildren.bind(this)} className="at-icon at-icon-add-circle mr-32"></View>
+                </View>
+            </View>
+        </View> */}
         <View className="fixed fixed-b">
             <AtButton className="border-radius-0" type='primary' onClick={this.submit.bind(this)}>提交</AtButton>
         </View>

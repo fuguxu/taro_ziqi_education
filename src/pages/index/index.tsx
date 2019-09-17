@@ -1,5 +1,5 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { AtButton ,AtSearchBar} from 'taro-ui'
 import './index.scss'
 
@@ -50,18 +50,31 @@ export default class Index extends Component {
       url:'/pages/sign/sign'
     })
   }
+  orgClick = ()=>{
+    Taro.navigateTo({
+      url:'/pages/orgSign/orgSign'
+    })
+  }
   onShareAppMessage (res){
     console.log(res)
     return {
-      title: '张晶，这是给你的哟！点点看哟！',
+      title: '点点看哟！',
       path: '/pages/user/user?id=123'
     }
   }
   componentWillMount () { }
 
   componentDidMount () {
-    console.log(Taro)
-   }
+    console.log(DEV)
+    console.log()
+    // console.log(Taro.DEV)
+    // Taro.request({
+    //   url:'https://ming849358679.imwork.net/doLogin?username=123456789&password=123456&type=mobile',
+    //   method:'GET'
+    // }).then(res=>{
+    //   console.log(res)
+    // })
+  }
 
   componentWillUnmount () { }
 
@@ -81,7 +94,8 @@ export default class Index extends Component {
         </View>
         <View className='at-icon at-icon-settings'></View>
         <View className='fa fa-clock-o'></View>
-        <AtButton onClick={this.signClick} type='primary'>注册</AtButton>
+        <AtButton onClick={this.signClick} type='primary'>家长注册</AtButton>
+        <AtButton className="mt-10" onClick={this.orgClick} type='primary'>机构注册</AtButton>
       </View>
       
     )
