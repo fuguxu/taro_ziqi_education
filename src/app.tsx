@@ -26,6 +26,7 @@ class App extends Component {
       'pages/sign/sign',
       'pages/orgSign/orgSign',
       'pages/child/child',
+      'pages/cate/cate',
     ],
     "permission": {
       "scope.userLocation": {
@@ -49,6 +50,12 @@ class App extends Component {
           text:'首页',
           iconPath: "./assets/tab-bar/home.png",
           selectedIconPath: "./assets/tab-bar/home-active.png",
+        },
+        {
+          pagePath:'pages/cate/cate',
+          text:'分类',
+          iconPath: "./assets/tab-bar/cate.png",
+          selectedIconPath: "./assets/tab-bar/cate-active.png",
         },
         {
           pagePath:'pages/user/user',
