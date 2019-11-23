@@ -1,0 +1,67 @@
+@import "./style/custom-variables.scss";
+
+// 在此可覆盖taro-ui里面的样式
+.at-grid__flex .content-inner__text{
+  font-size: $font-size-normal;
+}
+
+
+//通用的类名
+.fixed {
+  position: fixed;
+  &-b{
+      bottom: 0px;
+      left:0px;
+      right:0px;
+  }
+  &-t{
+      top:0px;
+      left:0px;
+      right:0px;
+  }
+}
+.border-radius-0{
+  border-radius:0px;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.pl-32{
+  padding-left:32px;
+}
+.pr-32{
+  padding-right: 32px;
+}
+.pt-10{
+  padding-top:10px;
+}
+.pb-10{
+  padding-bottom:10px;
+}
+.mt-10{
+  margin-top:10px;
+}
+.ml-32{
+  margin-left:32px;
+}
+.mr-32{
+  margin-right: 32px;
+}
+.border-b{
+  border-bottom:1px solid $border-color;
+}
+.font-b{
+  font-weight: bold;
+}
+.color-fff{
+  color:#fff;
+}
+.color-placholder{
+  color:#aaa;
+}

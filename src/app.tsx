@@ -27,6 +27,7 @@ class App extends Component {
       'pages/orgSign/orgSign',
       'pages/child/child',
       'pages/cate/cate',
+      'pages/search/search',
     ],
     "permission": {
       "scope.userLocation": {
@@ -42,7 +43,7 @@ class App extends Component {
     },
     tabBar:{
       color: "#666",
-      selectedColor: "#b4282d",
+      selectedColor: "#47cab3",
       backgroundColor: "#fafafa",
       list:[
         {

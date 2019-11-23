@@ -1,0 +1,32 @@
+@import "../../style/custom-variables.scss";
+$header-height :110px;
+$search-input-height:50px;
+.index{
+  padding-top:$header-height;
+  .search-header{
+    background-color: $color-brand;
+    height: $header-height;
+    padding-top: 50px;
+    box-sizing: border-box;
+    &.fixed{
+      z-index: 1000;
+    }
+    .search{
+      background-color: #fff;
+      height: $search-input-height;
+      display: flex;
+      align-items: center;
+      border-radius: $search-input-height/2;
+      .placholder{
+        margin-left:40px;
+        font-size: 24px;
+      }
+      .search-icon{
+        margin-left:25px;
+      }
+    }
+  }
+  .swiper-container{
+    padding:20px;
+  }
+}

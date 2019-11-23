@@ -1,6 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { AtButton ,AtSearchBar} from 'taro-ui'
+import { View,Image ,Swiper, SwiperItem} from '@tarojs/components'
+import { AtButton,AtGrid } from 'taro-ui'
 import './index.scss'
 
 export default class Index extends Component {
@@ -13,55 +13,63 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页',
+    // navigationBarTitleText: '首页',
+    // navigationBarBackgroundColor:'#47cab3',
+    navigationBarTextStyle:'white',
+    navigationStyle:'custom'
   }
 
   state = {
-    value:''
+    value:'',
+    bannerList:[],
+    sourceList:[
+      {
+        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+        value: '音乐'
+      },
+      {
+        image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
+        value: '书画'
+      },
+      {
+        image: 'https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+        value: '舞蹈'
+      },
+      {
+        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
+        value: '辅导'
+      },
+      {
+        image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',
+        value: '小学'
+      },
+      {
+        image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
+        value: '初中'
+      },
+      {
+        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+        value: '高中'
+      },
+      {
+        image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+        value: '机构入驻'
+      }
+    ]
   }
 
-  onChange=(value)=>{
+  onChange(value){
     this.setState({
       value
     })
   }
-
-  handlerClick = async ()=>{ //用箭头函数 在模板中绑定解决this指向问题
-    console.log(this)
-    // Taro.showToast({
-    //   title: '测试一条toast',
-    //   icon: 'none'
-    // })
-    Taro.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success (res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        Taro.openLocation({
-          latitude,
-          longitude,
-          scale: 18
-        })
-      }
-     })
-  }
-  signClick = async ()=>{
+  clickSearch(){
+    //点击搜索框跳转到搜索页面
     Taro.navigateTo({
-      url:'/pages/sign/sign'
+      url:'/pages/search/search'
     })
   }
-  orgClick = ()=>{
-    Taro.navigateTo({
-      url:'/pages/orgSign/orgSign'
-    })
-  }
-  onShareAppMessage (res){
-    console.log(res)
-    return {
-      title: '点点看哟！',
-      path: '/pages/user/user?id=123'
-    }
-  }
+  
   componentWillMount () { }
 
   componentDidMount () {
@@ -74,6 +82,26 @@ export default class Index extends Component {
     // }).then(res=>{
     //   console.log(res)
     // })
+    setTimeout(()=>{
+      this.setState({
+        bannerList:[{
+          url:require('../../assets/images/banner.jpg'),
+          id:1
+        },
+        {
+          url:require('../../assets/images/banner.jpg'),
+          id:2
+        },
+        {
+          url:require('../../assets/images/banner.jpg'),
+          id:3
+        },
+        {
+          url:require('../../assets/images/banner.jpg'),
+          id:4
+        }]
+      })
+    },2000)
   }
 
   componentWillUnmount () { }
@@ -83,21 +111,48 @@ export default class Index extends Component {
   componentDidHide () { }
 
   render () {
+    console.log('index render')
+    const { bannerList,sourceList } = this.state ;
+    const banner = bannerList.map(item=>{
+      return <SwiperItem key={item.id}>
+                <Image style="width:100%;" src={item.url}></Image>
+             </SwiperItem>
+    })
+
+    // const source = sourceList.map((item)=>{
+    //   return <View className="source-item">
+    //             <View className=""></View>
+    //             <View>{item.name}</View>
+    //          </View>
+    // })
+
     return (
       <View className='index'>
-        <AtButton onClick={this.handlerClick} type='primary'>查看地理位置</AtButton>
-        <View>
-          <AtSearchBar
-          value={this.state.value}
-          onChange={this.onChange}
-        />
+        {/* 首页搜索 */}
+        <View className="search-header fixed fixed-t"> 
+          <View className="at-row at-row__align--center">
+            <View className='at-col at-col-3 text-center color-fff font-b'>子启云</View>
+            <View className='at-col at-col-6 search' onClick={this.clickSearch.bind(this)}>
+              <View className='at-icon at-icon-search search-icon'></View>
+              <View className='color-placholder placholder'>搜索课程</View>
+            </View>
+          </View>
         </View>
-        <View className='at-icon at-icon-settings'></View>
-        <View className='fa fa-clock-o'></View>
-        <AtButton onClick={this.signClick} type='primary'>家长注册</AtButton>
-        <AtButton className="mt-10" onClick={this.orgClick} type='primary'>机构注册</AtButton>
+        <View className="swiper-container">
+          <Swiper
+            className='test-h'
+            indicatorColor='#aaa'
+            indicatorActiveColor='#47cab3'
+            circular
+            indicatorDots
+            autoplay>
+            {banner}
+          </Swiper>
+        </View>
+        <View className="course-list">
+          <AtGrid columnNum={4} hasBorder={false} data={sourceList} />
+        </View>
       </View>
-      
     )
   }
 }
