@@ -1,8 +1,12 @@
-@import "./style/custom-variables.scss";
+@import "./custom-variables.scss";
 
 // 在此可覆盖taro-ui里面的样式
-.at-grid__flex .content-inner__text{
-  font-size: $font-size-normal;
+.at-grid {
+  .at-grid__flex {
+    .content-inner__text{
+      font-size: $font-size-normal !important;
+    }
+  }
 }
 
 
@@ -63,5 +67,5 @@
   color:#fff;
 }
 .color-placholder{
-  color:#aaa;
+  color:$color-grey-1;
 }

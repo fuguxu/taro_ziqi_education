@@ -2,6 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View,Image ,Swiper, SwiperItem} from '@tarojs/components'
 import { AtButton,AtGrid } from 'taro-ui'
 import './index.scss'
+import Recommend from '@/components/recommend/recommend';
+import HotCourse from '@/components/hotCourse/hot-course';
 
 export default class Index extends Component {
 
@@ -118,7 +120,7 @@ export default class Index extends Component {
                 <Image style="width:100%;" src={item.url}></Image>
              </SwiperItem>
     })
-
+    const adUrl = require('../../assets/images/ad.svg');
     // const source = sourceList.map((item)=>{
     //   return <View className="source-item">
     //             <View className=""></View>
@@ -152,6 +154,11 @@ export default class Index extends Component {
         <View className="course-list">
           <AtGrid columnNum={4} hasBorder={false} data={sourceList} />
         </View>
+        <View className="ad-list">
+          <Image style="width:100%;" mode="widthFix" src="/assets/images/ad.svg"></Image>
+        </View>
+        <Recommend />
+        <HotCourse />
       </View>
     )
   }

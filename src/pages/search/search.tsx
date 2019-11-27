@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtButton ,AtSearchBar,AtInput} from 'taro-ui'
-import './cate.scss'
+import './search.scss'
 
 export default class Cate extends Component {
 
