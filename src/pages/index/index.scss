@@ -1,8 +1,10 @@
 @import "../../style/custom-variables.scss";
+@import "../../style/mixin.scss";
 $header-height :110px;
 $search-input-height:50px;
 .index{
   padding-top:$header-height;
+  @include clearfix;
   .search-header{
     background-color: $color-brand;
     height: $header-height;
@@ -14,8 +16,8 @@ $search-input-height:50px;
     .search{
       background-color: #fff;
       height: $search-input-height;
-      display: flex;
-      align-items: center;
+      @include display-flex;
+      @include align-items(center);
       border-radius: $search-input-height/2;
       .placholder{
         margin-left:40px;
@@ -31,7 +33,7 @@ $search-input-height:50px;
   }
   .ad-list{
     padding:0 20px;
-    display: flex;
+    @include display-flex;
     // margin-top:-100px;
   }
 }

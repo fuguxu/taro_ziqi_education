@@ -1,5 +1,5 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View,Image ,Swiper, SwiperItem } from '@tarojs/components'
+import { View,Image ,Swiper, SwiperItem,Text } from '@tarojs/components'
 // import { AtButton } from 'taro-ui'
 import './hot-course.scss';
 
@@ -14,30 +14,30 @@ export default class Recommend extends Component {
           url:require('../../assets/images/hot-course1.svg'),
           name:'课程名称',
           character:'课程特点，优点简介',
-          price:'150'
+          price:150
         },
         {
           id:2,
           url:require('../../assets/images/hot-course1.svg'),
           name:'课程名称',
           character:'课程特点，优点简介',
-          price:'150'
+          price:150
         },
         {
           id:3,
           url:require('../../assets/images/hot-course1.svg'),
           name:'课程名称',
           character:'课程特点，优点简介',
-          sale_price:'199',
-          price:'129'
+          sale_price:199,
+          price:129
         },
         {
           id:4,
           url:require('../../assets/images/hot-course1.svg'),
           name:'课程名称',
           character:'课程特点，优点简介',
-          sale_price:'199',
-          price:'129'
+          sale_price:199,
+          price:129
         }
       ],
     }
@@ -53,7 +53,11 @@ export default class Recommend extends Component {
                     <View className="desc">
                       <View className="character">{item.character}</View>
                       <View className="name">{item.name}</View>
-                      <View className="price">¥{item.price}</View>
+                      <View className="price-container">
+                        <Text className={`price ${item.sale_price?"sale_price":''}`}>¥{item.price}</Text> 
+                        {item.sale_price && <Text className="discount_price">¥{item.sale_price}</Text>} 
+                        {item.sale_price && <Text className="save_price">省{item.sale_price - item.price}元</Text>} 
+                      </View>
                     </View>
                  </View>
         })
