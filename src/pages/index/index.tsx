@@ -4,6 +4,8 @@ import { AtButton,AtGrid } from 'taro-ui'
 import './index.scss'
 import Recommend from '@/components/recommend/recommend';
 import HotCourse from '@/components/hotCourse/hot-course';
+import {setSwiperHeight} from '@/utils/index.js';
+const adUrl = require('../../assets/images/ad.svg');
 
 export default class Index extends Component {
 
@@ -23,7 +25,22 @@ export default class Index extends Component {
 
   state = {
     value:'',
-    bannerList:[],
+    bannerList:[{
+      url:require('../../assets/images/banner.jpg'),
+      id:1
+    },
+    {
+      url:require('../../assets/images/banner.jpg'),
+      id:2
+    },
+    {
+      url:require('../../assets/images/banner.jpg'),
+      id:3
+    },
+    {
+      url:require('../../assets/images/banner.jpg'),
+      id:4
+    }],
     sourceList:[
       {
         image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -57,7 +74,8 @@ export default class Index extends Component {
         image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
         value: '机构入驻'
       }
-    ]
+    ],
+    swiperH:''
   }
 
   onChange(value){
@@ -71,7 +89,23 @@ export default class Index extends Component {
       url:'/pages/search/search'
     })
   }
-  
+  onImgLoad(e){
+    // const swiperHa = setSwiperHeight(e);
+    console.log(setSwiperHeight)
+    // const winWid = Taro.getSystemInfoSync().windowWidth-20; //获取当前屏幕的宽度
+        
+        this.refs.swiper.boundingClientRect((rect)=> {
+          const winWid = rect.width
+          const imgh = e.detail.height;//图片高度
+          const imgw = e.detail.width;//图片宽度
+          const swiperH = winWid*imgh/imgw + "px" //
+          this.setState({
+            swiperH:swiperH//设置高度
+          })
+          console.log(rect.width)
+        }).exec();  
+   
+  }
   componentWillMount () { }
 
   componentDidMount () {
@@ -84,26 +118,11 @@ export default class Index extends Component {
     // }).then(res=>{
     //   console.log(res)
     // })
-    setTimeout(()=>{
-      this.setState({
-        bannerList:[{
-          url:require('../../assets/images/banner.jpg'),
-          id:1
-        },
-        {
-          url:require('../../assets/images/banner.jpg'),
-          id:2
-        },
-        {
-          url:require('../../assets/images/banner.jpg'),
-          id:3
-        },
-        {
-          url:require('../../assets/images/banner.jpg'),
-          id:4
-        }]
-      })
-    },2000)
+    // setTimeout(()=>{
+      // this.setState({
+      //   bannerList:
+      // })
+    // },2000)
   }
 
   componentWillUnmount () { }
@@ -114,19 +133,12 @@ export default class Index extends Component {
 
   render () {
     console.log('index render')
-    const { bannerList,sourceList } = this.state ;
+    const { bannerList,sourceList,swiperH } = this.state ;
     const banner = bannerList.map(item=>{
       return <SwiperItem key={item.id}>
-                <Image style="width:100%;" src={item.url}></Image>
+                <Image style="width:100%;" onLoad={this.onImgLoad.bind(this)} mode="widthFix" src={item.url}></Image>
              </SwiperItem>
     })
-    const adUrl = require('../../assets/images/ad.svg');
-    // const source = sourceList.map((item)=>{
-    //   return <View className="source-item">
-    //             <View className=""></View>
-    //             <View>{item.name}</View>
-    //          </View>
-    // })
 
     return (
       <View className='index'>
@@ -140,8 +152,10 @@ export default class Index extends Component {
             </View>
           </View>
         </View>
-        <View className="swiper-container">
+        <View className="swiper-container" >
           <Swiper
+            ref="swiper"
+            style={{height:swiperH}}
             className='test-h'
             indicatorColor='#aaa'
             indicatorActiveColor='#47cab3'
@@ -155,7 +169,7 @@ export default class Index extends Component {
           <AtGrid columnNum={4} hasBorder={false} data={sourceList} />
         </View>
         <View className="ad-list">
-          <Image style="width:100%;" mode="widthFix" src="/assets/images/ad.svg"></Image>
+          <Image style="width:100%;" mode="widthFix" src={adUrl}></Image>
         </View>
         <Recommend />
         <HotCourse />

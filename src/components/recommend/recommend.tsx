@@ -10,7 +10,7 @@ export default class Recommend extends Component {
     state = {
       list:[
         {
-          id:1,
+          id:0,
           children:[
             {
               url:require('../../assets/images/recommend1.png'),
@@ -39,14 +39,17 @@ export default class Recommend extends Component {
       this.setState({
         current:current === length ? 0 :current + 1 
       },()=>{
-        console.log(this.state.current)
+        // console.log(this.state.current)
       })
     }
     componentWillMount(){
       let listMap:any = [];
-      for(let val of new Array(3)){
-        listMap = [...this.state.list,...listMap]
+      for(let val of new Array(0,1,2)){
+        console.log(val)
+        listMap = [...this.state.list,...listMap];
+        listMap[val].id++;
       }
+      
       this.setState({
         list:listMap
       })

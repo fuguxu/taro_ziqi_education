@@ -3,7 +3,7 @@ import { View,Image ,Swiper, SwiperItem,Text } from '@tarojs/components'
 // import { AtButton } from 'taro-ui'
 import './hot-course.scss';
 
-export default class Recommend extends Component {
+export default class HotCourse extends Component {
     constructor(props){
         super(props)
     }
@@ -41,14 +41,18 @@ export default class Recommend extends Component {
         }
       ],
     }
-    
+    clickCourse(item){
+      Taro.navigateTo({
+        url:`/pages/courseDetail/course-detail?id=${item.id}`
+      })
+    }
     componentWillMount(){
       
     }
     render() {
         const {list} = this.state ;
         const courses = list.map((item)=>{
-          return <View className="list-item" key={item.id}>
+          return <View className="list-item" key={item.id} onClick={this.clickCourse.bind(this,item)}>
                     <Image className="img" mode="widthFix"  src={item.url} ></Image>
                     <View className="desc">
                       <View className="character">{item.character}</View>

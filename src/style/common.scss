@@ -8,6 +8,20 @@
     }
   }
 }
+.at-list__item {
+  font-size: $font-size-normal !important;
+  color:$color-grey-3 !important;
+  .item-extra__icon-arrow{
+    color:$color-grey-4 !important;
+  }
+  .item-extra__info{
+    font-size: $font-size-normal !important;
+    color:$color-grey-3 !important;
+  }
+  &::after{
+    border-bottom: 1px solid $border-color !important;
+  }
+}
 
 
 //通用的类名
@@ -64,7 +78,7 @@
   font-weight: bold;
 }
 .color-fff{
-  color:#fff;
+  color:$color-white;
 }
 .color-placholder{
   color:$color-grey-1;

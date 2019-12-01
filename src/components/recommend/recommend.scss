@@ -7,7 +7,7 @@ $slide-height:8px;
 .recommend{
   margin:50px 10px;
   color:$color-grey-0;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px color-percent(#000,0.2);
   .text{
     font-size: $font-size-middle;
     @include display-flex;
@@ -34,7 +34,7 @@ $slide-height:8px;
   .slide{
     width:$slide-width;
     height:$slide-height;
-    background-color: rgba(204, 204, 204, 0.5);
+    background-color: color-percent($color-grey-2,0.5);
     position: relative;
     margin-top:-35px;
     .move-block{
