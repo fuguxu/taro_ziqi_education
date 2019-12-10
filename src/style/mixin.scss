@@ -6,7 +6,7 @@
   flex-wrap: $value;
 }
 
-@mixin align-items($value: stretch) {
+@mixin align-items($value: center) {
   align-items: $value;
   @if $value == flex-start {
     -webkit-box-align: start;
@@ -17,11 +17,11 @@
   }
 }
 
-@mixin align-content($value: flex-start) {
+@mixin align-content($value: center) {
   align-content: $value;
 }
 
-@mixin justify-content($value: flex-start) {
+@mixin justify-content($value: center) {
   justify-content: $value;
   @if $value == flex-start {
     -webkit-box-pack: start;
@@ -87,6 +87,20 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/**
+ * 固定定位
+ */
+ @mixin fixed($pos:bottom) {
+  position: fixed;
+  left:0px;
+  right:0px;
+  @if($pos == top){
+    top:0px;
+  }@else{
+    bottom:0px;
+  }
 }
 
 /**

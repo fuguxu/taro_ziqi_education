@@ -9,6 +9,7 @@ declare module "*.scss";
 declare module "*.sass";
 declare module "*.styl";
 declare module "*.js";
+// declare module "*.tsx";
 
 // @ts-ignore
 declare const process: {

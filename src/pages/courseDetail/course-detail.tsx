@@ -1,8 +1,10 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View,Image ,Swiper, SwiperItem,Text} from '@tarojs/components'
-import { AtToast,AtButton,AtList, AtListItem } from 'taro-ui'
+import { AtToast,AtButton,AtList, AtListItem ,AtActionSheet, AtActionSheetItem} from 'taro-ui'
 import './course-detail.scss'
-
+import RateDetailList from '@/components/rateDetailList/rate-detail-list';
+import PeopleWatch from '@/components/peopleWatch/people-watch'
+import FooterCarBuy from '@/components/footCarBuy/foot-car-buy'
 export default class CourseDetail extends Component {
 
   /**
@@ -47,7 +49,20 @@ export default class CourseDetail extends Component {
     swiperH:'',
     current:1,
     isOpened:false,
-    toastText:''
+    isCourseOpend:false,
+    toastText:'',
+    choiceCourseId:1,
+    pricePerCourse:100,
+    rateData:[
+      {
+        name:'ws',
+        nick_name:'white swan',
+        rate:4.5,
+        time:'2019-09-12 18:46',
+        course:'小升初综合辅导',
+        content:'教室环境很好，老师授课耐心'
+      }
+    ]
   }
 
  
@@ -95,9 +110,35 @@ export default class CourseDetail extends Component {
       isOpened:false ,
     })
   }
+
+  openChoiceCourse(){
+    this.setState({
+      isCourseOpend:true
+    })
+  }
+  closeChoiceCourse(){
+    this.setState({
+      isCourseOpend:false
+    })
+  }
+  choiceCouseChange(item,index){
+    this.setState({
+      choiceCourseId:index
+    })
+  }
+  toOrgInfo(){
+    Taro.navigateTo({
+      url:`/pages/orgInfomation/orgInfomation?id=${this.$router.params.id}`
+    })
+  }
+  toRateDetail(){
+    Taro.navigateTo({
+      url:`/pages/rateDetail/rate-detail?id=${this.$router.params.id}`
+    })
+  }
   render () {
     console.log('detail render')
-    const { list ,swiperH,current,isOpened,toastText,data} = this.state ;
+    const { list ,swiperH,current,isOpened,toastText,data,rateData,isCourseOpend,choiceCourseId,pricePerCourse} = this.state ;
     const totalPage = list.length;
     const banner = list.map(item=>{
       return <SwiperItem key={item.id}>
@@ -109,6 +150,10 @@ export default class CourseDetail extends Component {
                 <View className="reason-index">{index + 1}</View>
                 <View className="reason-text">{item}</View>
              </View>
+    })
+
+    const courseAttr = ['一','两','三','四'].map((item,index)=>{
+        return <View key={index} onClick={this.choiceCouseChange.bind(this,item,index)} className={`course-attr-list-item ${choiceCourseId===index?'active':''}`}>{item}节</View>
     })
     return (
       <View className="course-detail">
@@ -162,17 +207,48 @@ export default class CourseDetail extends Component {
         {/* 已选、机构描述 */}
         <View className="course-list">
           <AtList  hasBorder={false}>
-            <AtListItem title='已选择：' arrow='right'  />
+            <AtListItem title='已选择：两节' arrow='right' onClick={this.openChoiceCourse.bind(this)} />
             <AtListItem title='课程参数：XXXXXXX' arrow='right' />
-            <AtListItem hasBorder={false} title='机构简介' arrow='right' />
+            <AtListItem hasBorder={false} title='机构简介' arrow='right' onClick={this.toOrgInfo.bind(this)} />
           </AtList>
         </View>
         <View className="block-line"></View>
         <View className="rate-list">
           <AtList hasBorder={false}>
-            <AtListItem title='用户评价(116)' extraText='99%好评' arrow='right' />
+            <AtListItem title='用户评价(116)' extraText='99%好评' onClick={this.toRateDetail.bind(this)} arrow='right' />
           </AtList>
         </View>
+        <View className="rate-detail">
+          <RateDetailList data={rateData} />
+        </View>
+        <View className="block-line"></View>
+        <PeopleWatch />
+        <FooterCarBuy />
+        {/* 选课面板 */}
+        <AtActionSheet isOpened ={isCourseOpend} onClose={this.closeChoiceCourse.bind(this)}>
+          <AtActionSheetItem>
+            <View className="course-sheet">
+              <View className="course-price">
+                <View>
+                  <Image className="vect" mode="widthFix"  src={require('../../assets/images/banner.jpg')}></Image>
+                </View>
+                <View className="price_tip">
+                  <View className="total-price">价格：¥{(choiceCourseId+1)*pricePerCourse}</View>
+                  <View className="course-tip">请选择规格属性</View>
+                </View>
+              </View>
+              <View className="course-attr">
+                <View className="course-attr-text">规格</View>
+                <View className="course-attr-list">
+                  {courseAttr}
+                </View>
+              </View>
+            </View>
+          </AtActionSheetItem>
+          <AtActionSheetItem>
+            <FooterCarBuy />
+          </AtActionSheetItem>
+        </AtActionSheet>
       </View>
     )
   }

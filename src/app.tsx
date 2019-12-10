@@ -29,6 +29,8 @@ class App extends Component {
       'pages/cate/cate',
       'pages/search/search',
       'pages/courseDetail/course-detail',
+      'pages/orgInfomation/orgInfomation',
+      'pages/rateDetail/rate-detail',
     ],
     "permission": {
       "scope.userLocation": {

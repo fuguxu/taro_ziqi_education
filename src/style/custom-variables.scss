@@ -16,8 +16,12 @@ $color-brand:#47cab3;
 $color-brand-light: #75d7c6;
 $color-brand-dark: #39a28f;
 $color-brand-deep: #009999;
+
 //轻提示背景色
 $at-toast-bg-color:rgba(0,0,0,0.5);
 
-//边框颜色
+/* Rate */
+// $at-rate-icon-size: 20PX !default;
+$at-rate-star-color: $color-grey-2 !default;
+$at-rate-star-color-on: #FF9900 !default;
 

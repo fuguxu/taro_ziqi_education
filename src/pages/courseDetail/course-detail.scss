@@ -115,4 +115,56 @@
   .course-list,.rate-list{
     padding-right: 24px;
   }
+
+  .course-sheet{
+    padding-bottom: 150px;
+    .course-price{
+      @include display-flex;
+      .vect{
+        width:200px;
+      }
+      .price_tip{
+        @include display-flex;
+        @include flex-direction(column);
+        @include justify-content(flex-end);
+        padding-bottom: 25px;
+        padding-left:15px;
+      }
+      .total-price{
+        color:$color-brand;
+        font-size: $font-size-normal;
+        text-align: left;
+      }
+      .course-tip{
+        font-size: $font-size-normal;
+        color:$color-grey-0;
+      }
+    }
+    .course-attr{
+      text-align: left;
+      color:$color-grey-0;
+      .course-attr-text{
+        font-size: $font-size-normal;
+        margin:30px 0px;
+      }
+      .course-attr-list{
+        @include display-flex;
+        font-size:$font-size-mini;
+        &-item{
+          padding:10px 20px;
+          margin-right:20px;
+          border:1px solid $color-grey-3;
+          border-radius: 5px;
+          &.active{
+            color:$color-brand;
+            border-color:$color-brand;
+          }
+          &.disabled{
+            color:$border-color;
+            border-color:$border-color;
+          }
+        }
+      }
+    }
+  }
 }
