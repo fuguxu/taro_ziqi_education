@@ -27,6 +27,8 @@ class App extends Component {
       'pages/orgSign/orgSign',
       'pages/child/child',
       'pages/cate/cate',
+      'pages/applicationCenter/application-center',
+      'pages/buyCar/buy-car',
       'pages/search/search',
       'pages/courseDetail/course-detail',
       'pages/orgInfomation/orgInfomation',
@@ -60,6 +62,18 @@ class App extends Component {
           text:'分类',
           iconPath: "./assets/tab-bar/cate.png",
           selectedIconPath: "./assets/tab-bar/cate-active.png",
+        },
+        {
+          pagePath:'pages/applicationCenter/application-center',
+          text:'应用中心',
+          iconPath: "./assets/tab-bar/application.png",
+          selectedIconPath: "./assets/tab-bar/application-active.png",
+        },
+        {
+          pagePath:'pages/buyCar/buy-car',
+          text:'购物车',
+          iconPath: "./assets/tab-bar/cart.png",
+          selectedIconPath: "./assets/tab-bar/cart-active.png",
         },
         {
           pagePath:'pages/user/user',
