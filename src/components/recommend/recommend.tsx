@@ -58,18 +58,18 @@ export default class Recommend extends Component {
       const {list} = this.state ;
       const banner = list.map(item=>{
         const imgs = item.children.map(it=>{
-                      return <Image className="img" mode="widthFix"  src={it.url} key={it.id}></Image>
+                      return <Image className='img' mode='widthFix'  src={it.url} key={it.id}></Image>
                     })
-        return <SwiperItem className="recommend-item" key={item.id}>
+        return <SwiperItem className='recommend-item' key={item.id}>
                    {imgs}
                </SwiperItem>
       })
         return (
-          <View className="recommend">
-            <View className="text">为您推荐</View>
-            <View className="swiper-container">
+          <View className='recommend'>
+            <View className='text'>为您推荐</View>
+            <View className='swiper-container'>
               <Swiper
-                ref="swiper"
+                ref='swiper'
                 className='recommend-swiper'
                 indicatorColor='#aaa'
                 indicatorActiveColor='#47cab3'
@@ -77,11 +77,12 @@ export default class Recommend extends Component {
                 // indicatorDots
                 // current={this.state.current}
                 onChange={this.slideChange.bind(this)}
-                autoplay>
+                autoplay
+              >
                 {banner}
               </Swiper>
-              <View className="slide">
-                <View style={{'left':this.state.current*50+'rpx'}} className="move-block"></View>
+              <View className='slide'>
+                <View style={{'left':this.state.current*50+'rpx'}} className='move-block'></View>
               </View>
             </View>
           </View>        

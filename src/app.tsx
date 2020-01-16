@@ -33,6 +33,7 @@ class App extends Component {
       'pages/courseDetail/course-detail',
       'pages/orgInfomation/orgInfomation',
       'pages/rateDetail/rate-detail',
+      'pages/orderDetail/order-detail',
     ],
     "permission": {
       "scope.userLocation": {

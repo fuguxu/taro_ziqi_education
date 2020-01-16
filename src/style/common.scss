@@ -18,6 +18,9 @@
     font-size: $font-size-normal !important;
     color:$color-grey-3 !important;
   }
+  .item-content__info-note{
+    color:$color-grey-1 !important;
+  }
   &::after{
     border-bottom: 1px solid $border-color !important;
   }

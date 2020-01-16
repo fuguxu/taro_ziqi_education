@@ -14,28 +14,32 @@ export default class FooterCarBuy extends Component {
     state = {
      
     }
-    
+    clickBuy(){
+      Taro.navigateTo({
+        url:`/pages/orderDetail/order-detail?id=${this.$router.params.id}`
+      })
+    }
     componentWillMount(){
       
     }
     render() {
        
         return (
-          <View className="footer-car-buy">
-            <View className="icon-list">
-              <View className="icon-item icon-home">
-                <Image className="img" mode="widthFix"  src={home}></Image>
+          <View className='footer-car-buy'>
+            <View className='icon-list'>
+              <View className='icon-item icon-home'>
+                <Image className='img' mode='widthFix'  src={home}></Image>
               </View>
-              <View className="icon-item icon-costom">
-                <Image className="img" mode="widthFix"  src={costom}></Image>
+              <View className='icon-item icon-costom'>
+                <Image className='img' mode='widthFix'  src={costom}></Image>
               </View>
-              <View className="icon-item icon-cart">
-                <Image className="img" mode="widthFix"  src={cart}></Image>
+              <View className='icon-item icon-cart'>
+                <Image className='img' mode='widthFix'  src={cart}></Image>
               </View>
             </View>
-            <View className="car-buy">
-              <View className="add-car">加入购物车</View>
-              <View className="add-buy">立即购买</View>
+            <View className='car-buy'>
+              <View className='add-car'>加入购物车</View>
+              <View onClick={this.clickBuy.bind(this)} className='add-buy'>立即购买</View>
             </View>
           </View>        
         )

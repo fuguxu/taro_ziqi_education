@@ -5,6 +5,7 @@ import './course-detail.scss'
 import RateDetailList from '@/components/rateDetailList/rate-detail-list';
 import PeopleWatch from '@/components/peopleWatch/people-watch'
 import FooterCarBuy from '@/components/footCarBuy/foot-car-buy'
+
 export default class CourseDetail extends Component {
 
   /**
@@ -142,13 +143,13 @@ export default class CourseDetail extends Component {
     const totalPage = list.length;
     const banner = list.map(item=>{
       return <SwiperItem key={item.id}>
-                <Image style="width:100%;" mode="widthFix" onLoad={this.onImgLoad.bind(this)} src={item.url}></Image>
+                <Image style='width:100%;' mode='widthFix' onLoad={this.onImgLoad.bind(this)} src={item.url}></Image>
              </SwiperItem>
     })
     const reason = data.reason.map((item,index)=>{
-      return <View className="reason-item" key={index}>
-                <View className="reason-index">{index + 1}</View>
-                <View className="reason-text">{item}</View>
+      return <View className='reason-item' key={index}>
+                <View className='reason-index'>{index + 1}</View>
+                <View className='reason-text'>{item}</View>
              </View>
     })
 
@@ -156,10 +157,10 @@ export default class CourseDetail extends Component {
         return <View key={index} onClick={this.choiceCouseChange.bind(this,item,index)} className={`course-attr-list-item ${choiceCourseId===index?'active':''}`}>{item}节</View>
     })
     return (
-      <View className="course-detail">
-        <View className="swiper">
+      <View className='course-detail'>
+        <View className='swiper'>
           <Swiper
-            ref="swiper"
+            ref='swiper'
             style={{height:swiperH}}
             className='test-h'
             indicatorColor='#aaa'
@@ -167,79 +168,80 @@ export default class CourseDetail extends Component {
             onChange={this.slideChange.bind(this)}
             circular
             // indicatorDots
-            autoplay>
+            autoplay
+          >
             {banner}
           </Swiper>
-          <View className="page">
+          <View className='page'>
             {current}/{totalPage}
           </View>
-          <View className="icon">
-            <View className="icon-item icon-collect" onClick={this.collect.bind(this)}>
+          <View className='icon'>
+            <View className='icon-item icon-collect' onClick={this.collect.bind(this)}>
               <View className='at-icon at-icon-star'></View>
             </View>
-            <View className="icon-item icon-share">
-              <AtButton className="button-share" openType="share"></AtButton>
+            <View className='icon-item icon-share'>
+              <AtButton className='button-share' openType='share'></AtButton>
               <View className='at-icon at-icon-share'></View>
             </View>
           </View>
         </View>
-        <AtToast isOpened={isOpened} onClose={this.toastClose.bind(this)} text={toastText} status="success" duration={2000}></AtToast>
+        <AtToast isOpened={isOpened} onClose={this.toastClose.bind(this)} text={toastText} status='success' duration={2000}></AtToast>
         {/* 课程描述 */}
-        <View className="detail">
-          <View className="price">¥{data.price}</View>
-          <View className="desc-sale">
-            <View className="desc">{data.desc}</View>
-            <View className="line"></View>
-            <View className="sale">
-              <Text className="sale_number">{data.sale_number}</Text>
-              <Text className="sale_text">销售量</Text>
+        <View className='detail'>
+          <View className='price'>¥{data.price}</View>
+          <View className='desc-sale'>
+            <View className='desc'>{data.desc}</View>
+            <View className='line'></View>
+            <View className='sale'>
+              <Text className='sale_number'>{data.sale_number}</Text>
+              <Text className='sale_text'>销售量</Text>
             </View>
           </View>
-          <View className="tips">{data.tips}</View>
-          <View className="reason">
-            <View className="reason-title">推荐理由</View>
-            <View className="reason-list">
+          <View className='tips'>{data.tips}</View>
+          <View className='reason'>
+            <View className='reason-title'>推荐理由</View>
+            <View className='reason-list'>
               {reason}
             </View>
           </View>
         </View>
-        <View className="block-line"></View>
+        <View className='block-line'></View>
         {/* 已选、机构描述 */}
-        <View className="course-list">
+        <View className='course-list'>
           <AtList  hasBorder={false}>
             <AtListItem title='已选择：两节' arrow='right' onClick={this.openChoiceCourse.bind(this)} />
             <AtListItem title='课程参数：XXXXXXX' arrow='right' />
             <AtListItem hasBorder={false} title='机构简介' arrow='right' onClick={this.toOrgInfo.bind(this)} />
           </AtList>
         </View>
-        <View className="block-line"></View>
-        <View className="rate-list">
+        <View className='block-line'></View>
+        <View className='rate-list'>
           <AtList hasBorder={false}>
             <AtListItem title='用户评价(116)' extraText='99%好评' onClick={this.toRateDetail.bind(this)} arrow='right' />
           </AtList>
         </View>
-        <View className="rate-detail">
+        <View className='rate-detail'>
           <RateDetailList data={rateData} />
         </View>
-        <View className="block-line"></View>
+        <View className='block-line'></View>
         <PeopleWatch />
         <FooterCarBuy />
         {/* 选课面板 */}
-        <AtActionSheet isOpened ={isCourseOpend} onClose={this.closeChoiceCourse.bind(this)}>
+        <AtActionSheet isOpened={isCourseOpend} onClose={this.closeChoiceCourse.bind(this)}>
           <AtActionSheetItem>
-            <View className="course-sheet">
-              <View className="course-price">
+            <View className='course-sheet'>
+              <View className='course-price'>
                 <View>
-                  <Image className="vect" mode="widthFix"  src={require('../../assets/images/banner.jpg')}></Image>
+                  <Image className='vect' mode='widthFix'  src={require('../../assets/images/banner.jpg')}></Image>
                 </View>
-                <View className="price_tip">
-                  <View className="total-price">价格：¥{(choiceCourseId+1)*pricePerCourse}</View>
-                  <View className="course-tip">请选择规格属性</View>
+                <View className='price_tip'>
+                  <View className='total-price'>价格：¥{(choiceCourseId+1)*pricePerCourse}</View>
+                  <View className='course-tip'>请选择规格属性</View>
                 </View>
               </View>
-              <View className="course-attr">
-                <View className="course-attr-text">规格</View>
-                <View className="course-attr-list">
+              <View className='course-attr'>
+                <View className='course-attr-text'>规格</View>
+                <View className='course-attr-list'>
                   {courseAttr}
                 </View>
               </View>

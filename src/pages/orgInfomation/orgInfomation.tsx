@@ -50,16 +50,16 @@ export default class OrgInfomation extends Component {
     const { isOpened,toastText} = this.state ;
     return (
       <View className='orgInfomation'>
-        <View className="head">
-          <View className="org-name">子启新教育机构</View>
-          <View onClick={this.collect.bind(this)} className="collect">收藏</View>
+        <View className='head'>
+          <View className='org-name'>子启新教育机构</View>
+          <View onClick={this.collect.bind(this)} className='collect'>收藏</View>
         </View>
-        <View className="content">
+        <View className='content'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
         </View>
-        <AtToast isOpened={isOpened} onClose={this.toastClose.bind(this)} text={toastText} status="success" duration={2000}></AtToast>
+        <AtToast isOpened={isOpened} onClose={this.toastClose.bind(this)} text={toastText} status='success' duration={2000}></AtToast>
       </View>
     )
   }
