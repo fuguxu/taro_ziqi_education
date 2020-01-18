@@ -34,6 +34,7 @@ class App extends Component {
       'pages/orgInfomation/orgInfomation',
       'pages/rateDetail/rate-detail',
       'pages/orderDetail/order-detail',
+      'pages/myChild/my-child',
     ],
     "permission": {
       "scope.userLocation": {

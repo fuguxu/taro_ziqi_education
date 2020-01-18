@@ -21,7 +21,9 @@ export default class OrderDetail extends Component {
   }
 
   openChildList(){
-
+    Taro.navigateTo({
+      url: `/pages/myChild/my-child?id=${this.$router.params.id}`
+    })
   }
   
   componentWillMount () { }
@@ -39,7 +41,7 @@ export default class OrderDetail extends Component {
 
   render () {
     console.log('order-detail render')
-
+    const orgIcon = require('../../assets/images/org-icon.svg');
     return (
       <View className='order-detail'>
         <View className='child-list'>
@@ -49,7 +51,7 @@ export default class OrderDetail extends Component {
         </View>
         <View className='course-list'>
           <View className='org'>
-            <Image className='img' mode='widthFix'  src='../../assets/images/org-icon.svg' ></Image>
+            <Image className='img' mode='widthFix'  src={orgIcon} ></Image>
             <View>奥利奥辅导机构</View>
           </View>
           <View className='course-detail'>

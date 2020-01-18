@@ -25,7 +25,41 @@
     border-bottom: 1px solid $border-color !important;
   }
 }
+.at-checkbox{
+  &::before,&::after{
+    border:none !important;
+  }
+  .at-checkbox__icon-cnt{
+    border: 2px solid rgba(71, 202, 179, 1) !important;
+  }
+  .at-checkbox__option{
+    padding:0px !important;
+    &-wrap{
+        padding:0px !important;
+    }
+  }
+}
+.at-button{
+  border-radius: 0px !important;
+}
 
+.at-input{
+  color:$color-grey-3 !important;
+  &::after{
+    border-color: $border-color !important;
+  }
+  .at-input__title{
+    width:auto !important;
+  }
+}
+.at-textarea{
+  color:$color-grey-3 !important;
+  border:1px solid $border-color;
+  textarea{
+    width:100% !important;
+    padding:20px;
+  }
+}
 
 //通用的类名
 .fixed {

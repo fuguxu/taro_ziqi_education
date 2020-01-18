@@ -23,23 +23,23 @@ export default class RateDetailList extends Component<propsType> {
   render(){
     const { data = []} = this.props;
     const list = data.map(item=>{
-      return <View className="rate-detail-list-item border-class" key={item.content}>
-                <View className="user-item">
-                  <View className="user-avatar">{item.name}</View>
-                  <View className="user-name">{item.nick_name}</View>
+      return <View className='rate-detail-list-item border-class' key={item.content}>
+                <View className='user-item'>
+                  <View className='user-avatar'>{item.name}</View>
+                  <View className='user-name'>{item.nick_name}</View>
                   <AtRate size={15} value={item.rate}  />
                 </View>
-                <View className="time-course">
+                <View className='time-course'>
                   <Text>{item.time}</Text>
                   <Text>{item.course}</Text>
                 </View>
-                <View className="course-content">
+                <View className='course-content'>
                   {item.content}
                 </View>
              </View>
     })
     return (
-      <View className="rate-detail-list">
+      <View className='rate-detail-list'>
         {list}
       </View>
     )

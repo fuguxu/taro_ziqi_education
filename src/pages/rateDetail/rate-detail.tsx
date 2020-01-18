@@ -124,23 +124,23 @@ export default class RateDetail extends Component {
   render () {
     const {rateData=[],tagList,showMoreFlag,activeIndex} = this.state ;
     const tag = tagList.map((item,index)=>{
-        return <View onClick={this.clickTag.bind(this,item,index)} className={`tag-item ${activeIndex===index?'active':''}`}>{item.tagName}({item.number})</View>
+        return <View key={item.tagName} onClick={this.clickTag.bind(this,item,index)} className={`tag-item ${activeIndex===index?'active':''}`}>{item.tagName}({item.number})</View>
     })
     return (
       <View className='rate-detail'>
-        <View className="head">
+        <View className='head'>
           <View>评价</View>
-          <AtRate className="head-rate" size={15} value={5} />
+          <AtRate className='head-rate' size={15} value={5} />
           <View>94.8% 好评</View>
         </View>
         <View className={`tag ${showMoreFlag?'':'tag-2'}`}>
           {tag}
         </View>
-        <View className="icon">
+        <View className='icon'>
           <View className={`at-icon ${showMoreFlag?'at-icon-chevron-up':'at-icon-chevron-down'}`} onClick={this.toggle.bind(this)}></View>
         </View>
-        <View className="rate-list">
-          <RateDetailList border-class="border-class" data={rateData}/>
+        <View className='rate-list'>
+          <RateDetailList border-class='border-class' data={rateData} />
         </View>
       </View>
     )

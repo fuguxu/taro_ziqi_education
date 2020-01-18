@@ -4,7 +4,7 @@ import {AtForm,AtButton, AtInput} from 'taro-ui'
 
 import './sign.scss'
 
-import ChildList from '@/components/childrenList/children-list';
+import ChildrenList from '@/components/childrenList/children-list';
 
 
 export default class Sign extends Component {
@@ -104,67 +104,68 @@ export default class Sign extends Component {
       <View className='sign'>
           <AtForm>
             <AtInput
-            name='name'
-            type='text'
-            placeholder='姓名'
-            value={this.state.form.name}
-            onChange={this.handleChange.bind(this,'name')}
+              name='name'
+              type='text'
+              placeholder='姓名'
+              value={this.state.form.name}
+              onChange={this.handleChange.bind(this,'name')}
             />
             <AtInput
-                name='mobile_no'
-                type='phone'
-                placeholder='手机号码'
-                value={this.state.form.mobile_no}
-                onChange={this.handleChange.bind(this,'mobile_no')}
+              name='mobile_no'
+              type='phone'
+              placeholder='手机号码'
+              value={this.state.form.mobile_no}
+              onChange={this.handleChange.bind(this,'mobile_no')}
             />
             <AtInput
-                name='short_name'
-                type='text'
-                placeholder='称呼'
-                value={this.state.form.short_name}
-                onChange={this.handleChange.bind(this,'short_name')}
+              name='short_name'
+              type='text'
+              placeholder='称呼'
+              value={this.state.form.short_name}
+              onChange={this.handleChange.bind(this,'short_name')}
             />
             <AtInput
-                name='emergency_mobile'
-                type='phone'
-                placeholder='紧急联系方式'
-                value={this.state.form.emergency_mobile}
-                onChange={this.handleChange.bind(this,'emergency_mobile')}
+              name='emergency_mobile'
+              type='phone'
+              placeholder='紧急联系方式'
+              value={this.state.form.emergency_mobile}
+              onChange={this.handleChange.bind(this,'emergency_mobile')}
             />
-            <Picker rangeKey="label" mode='selector' value={0} range={this.state.sexOptions} 
-                    onChange={this.handleChange.bind(this,'sex')}>
+            <Picker rangeKey='label' mode='selector' value={0} range={this.state.sexOptions} 
+              onChange={this.handleChange.bind(this,'sex')}
+            >
                 <View>
                     <AtInput
-                        name='sex'
-                        type='text'
-                        editable={false}
-                        placeholder='性别'
-                        value={this.state.form.sex.label}
-                        onChange={()=>{}}
+                      name='sex'
+                      type='text'
+                      editable={false}
+                      placeholder='性别'
+                      value={this.state.form.sex.label}
+                      onChange={()=>{}}
                     />
                 </View>
             </Picker>
             <Picker  mode='region' value={this.state.form.area}  onChange={this.handleChangeArae.bind(this)}>
                 <View>
                     <AtInput
-                        name='area'
-                        type='text'
-                        editable={false}
-                        placeholder='省市区'
-                        value={this.state.form.area.join(' ')}
-                        onChange={()=>{}}
+                      name='area'
+                      type='text'
+                      editable={false}
+                      placeholder='省市区'
+                      value={this.state.form.area.join(' ')}
+                      onChange={()=>{}}
                     />
                 </View>
             </Picker>
             <AtInput
-                name='detail_area'
-                type='text'
-                placeholder='详细地址,如街道、楼盘号等'
-                value={this.state.form.detail_area}
-                onChange={this.handleChange.bind(this,'detail_area')}
+              name='detail_area'
+              type='text'
+              placeholder='详细地址,如街道、楼盘号等'
+              value={this.state.form.detail_area}
+              onChange={this.handleChange.bind(this,'detail_area')}
             />
         </AtForm>
-        <ChildList></ChildList>
+        <ChildrenList></ChildrenList>
         {/* <View>
             <View className="at-row border-b pt-10 pb-10">
                 <View className="at-col-10">
@@ -175,8 +176,8 @@ export default class Sign extends Component {
                 </View>
             </View>
         </View> */}
-        <View className="fixed fixed-b">
-            <AtButton className="border-radius-0" type='primary' onClick={this.submit.bind(this)}>提交</AtButton>
+        <View className='fixed fixed-b'>
+            <AtButton className='border-radius-0' type='primary' onClick={this.submit.bind(this)}>提交</AtButton>
         </View>
       </View>
     )

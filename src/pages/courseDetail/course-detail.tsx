@@ -1,6 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View,Image ,Swiper, SwiperItem,Text} from '@tarojs/components'
-import { AtToast,AtButton,AtList, AtListItem ,AtActionSheet, AtActionSheetItem} from 'taro-ui'
+import { View, Image, Swiper, SwiperItem, Text } from '@tarojs/components'
+import { AtToast, AtButton, AtList, AtListItem, AtActionSheet, AtActionSheetItem } from 'taro-ui'
 import './course-detail.scss'
 import RateDetailList from '@/components/rateDetailList/rate-detail-list';
 import PeopleWatch from '@/components/peopleWatch/people-watch'
@@ -18,60 +18,60 @@ export default class CourseDetail extends Component {
   config: Config = {
     navigationBarTitleText: '课程详情',
     // navigationBarBackgroundColor:'#47cab3',
-    navigationBarTextStyle:'black',
+    navigationBarTextStyle: 'black',
   }
 
 
 
   state = {
-    list:[{
-      url:require('../../assets/images/banner.jpg'),
-      id:1
+    list: [{
+      url: require('../../assets/images/banner.jpg'),
+      id: 1
     },
     {
-      url:require('../../assets/images/banner.jpg'),
-      id:2
+      url: require('../../assets/images/banner.jpg'),
+      id: 2
     },
     {
-      url:require('../../assets/images/banner.jpg'),
-      id:3
+      url: require('../../assets/images/banner.jpg'),
+      id: 3
     },
     {
-      url:require('../../assets/images/banner.jpg'),
-      id:4
+      url: require('../../assets/images/banner.jpg'),
+      id: 4
     }],
-    data:{
-      price:'499',
-      desc:'课程名称课程简介介绍课程课程课程',
-      sale_number:6666,
-      tips:'7天未报到自动退款',
-      reason:['师资优良，结合中西方教学优点','师资优良，结合中西方教学优点']
+    data: {
+      price: '499',
+      desc: '课程名称课程简介介绍课程课程课程',
+      sale_number: 6666,
+      tips: '7天未报到自动退款',
+      reason: ['师资优良，结合中西方教学优点', '师资优良，结合中西方教学优点']
     },
-    swiperH:'',
-    current:1,
-    isOpened:false,
-    isCourseOpend:false,
-    toastText:'',
-    choiceCourseId:1,
-    pricePerCourse:100,
-    rateData:[
+    swiperH: '',
+    current: 1,
+    isOpened: false,
+    isCourseOpend: false,
+    toastText: '',
+    choiceCourseId: 1,
+    pricePerCourse: 100,
+    rateData: [
       {
-        name:'ws',
-        nick_name:'white swan',
-        rate:4.5,
-        time:'2019-09-12 18:46',
-        course:'小升初综合辅导',
-        content:'教室环境很好，老师授课耐心'
+        name: 'ws',
+        nick_name: 'white swan',
+        rate: 4.5,
+        time: '2019-09-12 18:46',
+        course: '小升初综合辅导',
+        content: '教室环境很好，老师授课耐心'
       }
     ]
   }
 
- 
-  componentWillMount () { 
-    console.log(this.$router.params) 
+
+  componentWillMount() {
+    console.log(this.$router.params)
   }
   //设置分享页面的信息
-  onShareAppMessage (res){
+  onShareAppMessage(res) {
     console.log(res)
     return {
       title: '这个课程真棒，快来围观吧！',
@@ -79,89 +79,89 @@ export default class CourseDetail extends Component {
     }
   }
 
-  slideChange(){
-      const {current} = this.state ;
-      const length = this.state.list.length;
+  slideChange() {
+    const { current } = this.state;
+    const length = this.state.list.length;
+    this.setState({
+      current: current === length ? 1 : current + 1
+    }, () => {
+      // console.log(this.state.current)
+    })
+  }
+  onImgLoad(e) {
+    this.refs.swiper.boundingClientRect((rect) => {
+      const winWid = rect.width
+      const imgh = e.detail.height;//图片高度
+      const imgw = e.detail.width;//图片宽度
+      const swiperH = winWid * imgh / imgw + "px" //
       this.setState({
-        current:current === length ? 1 :current + 1 
-      },()=>{
-        // console.log(this.state.current)
+        swiperH: swiperH//设置高度
       })
+      console.log(rect.width)
+    }).exec();
   }
-  onImgLoad(e){
-      this.refs.swiper.boundingClientRect((rect)=> {
-        const winWid = rect.width
-        const imgh = e.detail.height;//图片高度
-        const imgw = e.detail.width;//图片宽度
-        const swiperH = winWid*imgh/imgw + "px" //
-        this.setState({
-          swiperH:swiperH//设置高度
-        })
-        console.log(rect.width)
-      }).exec();  
-  }
-  collect(){
+  collect() {
     this.setState({
-      isOpened:true ,
-      toastText:'收藏成功'
+      isOpened: true,
+      toastText: '收藏成功'
     })
   }
-  toastClose(){
+  toastClose() {
     this.setState({
-      isOpened:false ,
+      isOpened: false,
     })
   }
 
-  openChoiceCourse(){
+  openChoiceCourse() {
     this.setState({
-      isCourseOpend:true
+      isCourseOpend: true
     })
   }
-  closeChoiceCourse(){
+  closeChoiceCourse() {
     this.setState({
-      isCourseOpend:false
+      isCourseOpend: false
     })
   }
-  choiceCouseChange(item,index){
+  choiceCouseChange(item, index) {
     this.setState({
-      choiceCourseId:index
+      choiceCourseId: index
     })
   }
-  toOrgInfo(){
+  toOrgInfo() {
     Taro.navigateTo({
-      url:`/pages/orgInfomation/orgInfomation?id=${this.$router.params.id}`
+      url: `/pages/orgInfomation/orgInfomation?id=${this.$router.params.id}`
     })
   }
-  toRateDetail(){
+  toRateDetail() {
     Taro.navigateTo({
-      url:`/pages/rateDetail/rate-detail?id=${this.$router.params.id}`
+      url: `/pages/rateDetail/rate-detail?id=${this.$router.params.id}`
     })
   }
-  render () {
+  render() {
     console.log('detail render')
-    const { list ,swiperH,current,isOpened,toastText,data,rateData,isCourseOpend,choiceCourseId,pricePerCourse} = this.state ;
+    const { list, swiperH, current, isOpened, toastText, data, rateData, isCourseOpend, choiceCourseId, pricePerCourse } = this.state;
     const totalPage = list.length;
-    const banner = list.map(item=>{
+    const banner = list.map(item => {
       return <SwiperItem key={item.id}>
-                <Image style='width:100%;' mode='widthFix' onLoad={this.onImgLoad.bind(this)} src={item.url}></Image>
-             </SwiperItem>
+        <Image style='width:100%;' mode='widthFix' onLoad={this.onImgLoad.bind(this)} src={item.url}></Image>
+      </SwiperItem>
     })
-    const reason = data.reason.map((item,index)=>{
+    const reason = data.reason.map((item, index) => {
       return <View className='reason-item' key={index}>
-                <View className='reason-index'>{index + 1}</View>
-                <View className='reason-text'>{item}</View>
-             </View>
+        <View className='reason-index'>{index + 1}</View>
+        <View className='reason-text'>{item}</View>
+      </View>
     })
 
-    const courseAttr = ['一','两','三','四'].map((item,index)=>{
-        return <View key={index} onClick={this.choiceCouseChange.bind(this,item,index)} className={`course-attr-list-item ${choiceCourseId===index?'active':''}`}>{item}节</View>
+    const courseAttr = ['一', '两', '三', '四'].map((item, index) => {
+      return <View key={index} onClick={this.choiceCouseChange.bind(this, item, index)} className={`course-attr-list-item ${choiceCourseId === index ? 'active' : ''}`}>{item}节</View>
     })
     return (
       <View className='course-detail'>
         <View className='swiper'>
           <Swiper
             ref='swiper'
-            style={{height:swiperH}}
+            style={{ height: swiperH }}
             className='test-h'
             indicatorColor='#aaa'
             indicatorActiveColor='#47cab3'
@@ -208,7 +208,7 @@ export default class CourseDetail extends Component {
         <View className='block-line'></View>
         {/* 已选、机构描述 */}
         <View className='course-list'>
-          <AtList  hasBorder={false}>
+          <AtList hasBorder={false}>
             <AtListItem title='已选择：两节' arrow='right' onClick={this.openChoiceCourse.bind(this)} />
             <AtListItem title='课程参数：XXXXXXX' arrow='right' />
             <AtListItem hasBorder={false} title='机构简介' arrow='right' onClick={this.toOrgInfo.bind(this)} />
@@ -232,10 +232,10 @@ export default class CourseDetail extends Component {
             <View className='course-sheet'>
               <View className='course-price'>
                 <View>
-                  <Image className='vect' mode='widthFix'  src={require('../../assets/images/banner.jpg')}></Image>
+                  <Image className='vect' mode='widthFix' src={require('../../assets/images/banner.jpg')}></Image>
                 </View>
                 <View className='price_tip'>
-                  <View className='total-price'>价格：¥{(choiceCourseId+1)*pricePerCourse}</View>
+                  <View className='total-price'>价格：¥{(choiceCourseId + 1) * pricePerCourse}</View>
                   <View className='course-tip'>请选择规格属性</View>
                 </View>
               </View>
